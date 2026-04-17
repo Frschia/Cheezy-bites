@@ -132,10 +132,3 @@ Route::get('/pesanan', function (Illuminate\Http\Request $request) {
 
     return view('pesanan', compact('orders', 'status'));
 });
-
-use Illuminate\Support\Facades\Artisan;
-
-Route::get('/migrate', function () {
-    Artisan::call('migrate', ['--force' => true]);
-    return 'Migration done';
-});
