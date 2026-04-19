@@ -187,40 +187,63 @@
             }
         }
 
-        /* ===== HP ===== */
-        @media (max-width:480px){
+<style>
+/* ===== HP KECIL TAMPILAN SEPERTI TABLET ===== */
 
-            .nav-right{
-                flex-direction:column;
-                align-items:stretch;
-            }
+@media (max-width:480px){
 
-            .nav-right a{
-                width:100%;
-                text-align:center;
-            }
+    .navbar{
+        padding:10px 12px;
+        gap:12px;
+        flex-direction:row;
+        justify-content:space-between;
+        align-items:center;
+        overflow-x:auto;
+        white-space:nowrap;
+    }
 
-            .brand{
-                font-size:18px;
-            }
+    .nav-left{
+        display:flex;
+        align-items:center;
+        gap:8px;
+        flex-shrink:0;
+    }
 
-            h2{
-                font-size:22px;
-            }
+    .logo-nav{
+        width:36px;
+        height:36px;
+    }
 
-            .card{
-                padding:16px;
-            }
+    .brand{
+        display:block;
+        font-size:18px;
+        font-weight:bold;
+    }
 
-            .card h3{
-                font-size:15px;
-            }
+    .nav-right{
+        display:flex;
+        flex-direction:row;
+        gap:8px;
+        flex-wrap:nowrap;
+        align-items:center;
+    }
 
-            .card p{
-                font-size:24px;
-            }
-        }
-    </style>
+    .nav-right a{
+        font-size:13px;
+        padding:7px 10px;
+        border-radius:8px;
+        flex-shrink:0;
+    }
+
+    .cart-badge{
+        min-width:16px;
+        height:16px;
+        font-size:10px;
+        top:-4px;
+        right:-5px;
+    }
+}
+</style>
 </head>
 
 <body>

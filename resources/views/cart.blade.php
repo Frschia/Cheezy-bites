@@ -200,82 +200,63 @@
             }
         }
 
-        /* ===== MOBILE ===== */
-        @media (max-width:768px){
+<style>
+/* ===== HP KECIL TAMPILAN SEPERTI TABLET ===== */
 
-            .navbar{
-                flex-direction:column;
-                align-items:flex-start;
-            }
+@media (max-width:480px){
 
-            .nav-left{
-                width:100%;
-                justify-content:center;
-            }
+    .navbar{
+        padding:10px 12px;
+        gap:12px;
+        flex-direction:row;
+        justify-content:space-between;
+        align-items:center;
+        overflow-x:auto;
+        white-space:nowrap;
+    }
 
-            .nav-right{
-                width:100%;
-                justify-content:center;
-            }
+    .nav-left{
+        display:flex;
+        align-items:center;
+        gap:8px;
+        flex-shrink:0;
+    }
 
-            .cart-item{
-                flex-direction:column;
-                text-align:center;
-            }
+    .logo-nav{
+        width:36px;
+        height:36px;
+    }
 
-            .cart-info{
-                text-align:center;
-            }
+    .brand{
+        display:block;
+        font-size:18px;
+        font-weight:bold;
+    }
 
-            .total{
-                text-align:center;
-                font-size:20px;
-            }
+    .nav-right{
+        display:flex;
+        flex-direction:row;
+        gap:8px;
+        flex-wrap:nowrap;
+        align-items:center;
+    }
 
-            .checkout-wrap{
-                text-align:center;
-            }
+    .nav-right a{
+        font-size:13px;
+        padding:7px 10px;
+        border-radius:8px;
+        flex-shrink:0;
+    }
 
-            .checkout{
-                width:100%;
-            }
-
-            h2{
-                text-align:center;
-                font-size:24px;
-            }
-        }
-
-        /* ===== HP KECIL ===== */
-        @media (max-width:480px){
-
-            .nav-right{
-                flex-direction:column;
-                align-items:stretch;
-            }
-
-            .nav-right a{
-                width:100%;
-                text-align:center;
-            }
-
-            .brand{
-                font-size:18px;
-            }
-
-            h2{
-                font-size:22px;
-            }
-
-            .cart-info h3{
-                font-size:18px;
-            }
-
-            .qty-control button{
-                padding:7px 10px;
-            }
-        }
-    </style>
+    .cart-badge{
+        min-width:16px;
+        height:16px;
+        font-size:10px;
+        top:-4px;
+        right:-5px;
+    }
+}
+</style>
 </head>
 
 <body>

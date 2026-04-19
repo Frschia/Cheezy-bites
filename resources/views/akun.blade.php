@@ -171,36 +171,63 @@
             }
         }
 
-        /* ===== HP KECIL ===== */
-        @media (max-width: 480px){
-            .nav-right{
-                flex-direction:column;
-                align-items:stretch;
-            }
+<style>
+/* ===== HP KECIL TAMPILAN SEPERTI TABLET ===== */
 
-            .nav-right a{
-                width:100%;
-                text-align:center;
-            }
+@media (max-width:480px){
 
-            .brand{
-                font-size:18px;
-            }
+    .navbar{
+        padding:10px 12px;
+        gap:12px;
+        flex-direction:row;
+        justify-content:space-between;
+        align-items:center;
+        overflow-x:auto;
+        white-space:nowrap;
+    }
 
-            h2{
-                font-size:22px;
-            }
+    .nav-left{
+        display:flex;
+        align-items:center;
+        gap:8px;
+        flex-shrink:0;
+    }
 
-            .box p{
-                font-size:14px;
-            }
+    .logo-nav{
+        width:36px;
+        height:36px;
+    }
 
-            .btn{
-                font-size:14px;
-                padding:11px;
-            }
-        }
-    </style>
+    .brand{
+        display:block;
+        font-size:18px;
+        font-weight:bold;
+    }
+
+    .nav-right{
+        display:flex;
+        flex-direction:row;
+        gap:8px;
+        flex-wrap:nowrap;
+        align-items:center;
+    }
+
+    .nav-right a{
+        font-size:13px;
+        padding:7px 10px;
+        border-radius:8px;
+        flex-shrink:0;
+    }
+
+    .cart-badge{
+        min-width:16px;
+        height:16px;
+        font-size:10px;
+        top:-4px;
+        right:-5px;
+    }
+}
+</style>
 </head>
 
 <body>
