@@ -12,12 +12,14 @@ return new class extends Migration
     public function up()
 {
     Schema::create('orders', function (Blueprint $table) {
-        $table->id();
-        $table->string('nama');
-        $table->integer('total');
-        $table->string('status'); // pending, process, success
-        $table->timestamps();
-    });
+    $table->id();
+    $table->foreignId('user_id')->constrained()->onDelete('cascade');
+    $table->string('nama');
+    $table->integer('total');
+    $table->string('status');
+    $table->string('keterangan')->nullable();
+    $table->timestamps();
+});
 }
 
     /**

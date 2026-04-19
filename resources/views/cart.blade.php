@@ -2,172 +2,279 @@
 <html>
 <head>
     <title>Keranjang - Cheezy Bites</title>
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <style>
-        body {
-            font-family: Arial;
-            background-color: #fff8f0;
-            margin: 0;
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+            font-family:Arial, sans-serif;
+            background:#fff8f0;
         }
 
         /* ===== NAVBAR ===== */
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: orange;
-            padding: 10px 20px;
-            color: white;
-            flex-wrap: wrap;
+        .navbar{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            background:orange;
+            padding:12px 20px;
+            color:white;
+            flex-wrap:wrap;
+            gap:15px;
         }
 
-        .nav-left {
-            display: flex;
-            align-items: center;
+        .nav-left{
+            display:flex;
+            align-items:center;
+            gap:10px;
         }
 
-        .logo-nav {
-            width: 40px;
-            margin-right: 10px;
+        .logo-nav{
+            width:42px;
+            height:42px;
+            object-fit:cover;
+            border-radius:50%;
         }
 
-        .brand {
-            font-size: 20px;
-            font-weight: bold;
+        .brand{
+            font-size:22px;
+            font-weight:bold;
+            white-space:nowrap;
         }
 
-        .nav-right {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
+        .nav-right{
+            display:flex;
+            flex-wrap:wrap;
+            gap:10px;
+            align-items:center;
         }
 
-        .nav-right a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            padding: 5px;
+        .nav-right a{
+            color:white;
+            text-decoration:none;
+            font-weight:bold;
+            padding:8px 12px;
+            border-radius:8px;
+            transition:0.3s;
+            position:relative;
         }
 
-        /* ===== CONTAINER ===== */
-        .container {
-            padding: 20px;
+        .nav-right a:hover{
+            background:rgba(255,255,255,0.2);
+        }
+
+        .cart-badge{
+            position:absolute;
+            top:-5px;
+            right:-8px;
+            background:red;
+            color:white;
+            border-radius:50%;
+            min-width:18px;
+            height:18px;
+            font-size:11px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            padding:2px;
+        }
+
+        /* ===== CONTENT ===== */
+        .container{
+            max-width:1000px;
+            margin:auto;
+            padding:25px 15px;
+        }
+
+        h2{
+            margin-bottom:20px;
+            color:#333;
+            font-size:28px;
         }
 
         /* ===== CART ITEM ===== */
-        .cart-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: white;
-            border-radius: 10px;
-            padding: 10px;
-            margin-bottom: 15px;
-            gap: 10px;
+        .cart-item{
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            background:white;
+            border-radius:15px;
+            padding:15px;
+            margin-bottom:15px;
+            gap:15px;
+            box-shadow:0 3px 10px rgba(0,0,0,0.06);
         }
 
-        .cart-item img {
-            width: 80px;
-            height: 80px;
-            object-fit: cover;
-            border-radius: 10px;
+        .cart-item img{
+            width:90px;
+            height:90px;
+            object-fit:cover;
+            border-radius:12px;
         }
 
-        .cart-info {
-            flex: 1;
-            text-align: left;
-            margin-left: 10px;
+        .cart-info{
+            flex:1;
         }
 
-        .cart-info h3 {
-            margin: 0;
+        .cart-info h3{
+            font-size:20px;
+            margin-bottom:6px;
+            color:#333;
         }
 
-        .cart-info p {
-            margin: 5px 0;
+        .cart-info p{
+            margin:4px 0;
+            color:#555;
         }
 
         /* ===== QTY ===== */
-        .qty-control {
-            display: flex;
-            align-items: center;
-            gap: 5px;
+        .qty-control{
+            display:flex;
+            align-items:center;
+            gap:8px;
         }
 
-        .qty-control button {
-            background: orange;
-            border: none;
-            padding: 5px 10px;
-            color: white;
-            border-radius: 5px;
-            cursor: pointer;
+        .qty-control button{
+            background:orange;
+            border:none;
+            padding:8px 12px;
+            color:white;
+            border-radius:8px;
+            cursor:pointer;
+            font-size:16px;
         }
 
-        .qty-number {
-            font-weight: bold;
-            min-width: 20px;
-            text-align: center;
+        .qty-number{
+            font-weight:bold;
+            min-width:25px;
+            text-align:center;
+            font-size:16px;
         }
 
         /* ===== TOTAL ===== */
-        .total {
-            text-align: right;
-            font-size: 18px;
-            margin-top: 20px;
+        .total{
+            text-align:right;
+            font-size:22px;
+            margin-top:20px;
+            color:#333;
         }
 
-        /* ===== CHECKOUT ===== */
-        .checkout {
-            background: green;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            float: right;
-            margin-top: 10px;
-            border-radius: 5px;
-            cursor: pointer;
+        .checkout-wrap{
+            text-align:right;
+            margin-top:15px;
         }
 
-        /* ===== RESPONSIVE HP ===== */
-        @media (max-width: 768px) {
+        .checkout{
+            background:green;
+            color:white;
+            padding:12px 24px;
+            border:none;
+            border-radius:10px;
+            cursor:pointer;
+            font-size:16px;
+            font-weight:bold;
+        }
 
-            .navbar {
-                flex-direction: column;
-                text-align: center;
-                gap: 10px;
-            }
+        .checkout:hover{
+            opacity:0.9;
+        }
 
-            .nav-right {
-                justify-content: center;
-            }
+        .empty{
+            background:white;
+            padding:25px;
+            border-radius:15px;
+            text-align:center;
+            font-size:18px;
+        }
 
-            .cart-item {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
-
-            .cart-info {
-                margin-left: 0;
-                text-align: center;
-            }
-
-            .qty-control {
-                margin-top: 10px;
-            }
-
-            .total {
-                text-align: center;
-                font-size: 16px;
-            }
-
-            .checkout {
-                width: 100%;
+        /* ===== TABLET ===== */
+        @media (max-width:992px){
+            .nav-right{
+                width:100%;
+                justify-content:center;
             }
         }
 
+        /* ===== MOBILE ===== */
+        @media (max-width:768px){
+
+            .navbar{
+                flex-direction:column;
+                align-items:flex-start;
+            }
+
+            .nav-left{
+                width:100%;
+                justify-content:center;
+            }
+
+            .nav-right{
+                width:100%;
+                justify-content:center;
+            }
+
+            .cart-item{
+                flex-direction:column;
+                text-align:center;
+            }
+
+            .cart-info{
+                text-align:center;
+            }
+
+            .total{
+                text-align:center;
+                font-size:20px;
+            }
+
+            .checkout-wrap{
+                text-align:center;
+            }
+
+            .checkout{
+                width:100%;
+            }
+
+            h2{
+                text-align:center;
+                font-size:24px;
+            }
+        }
+
+        /* ===== HP KECIL ===== */
+        @media (max-width:480px){
+
+            .nav-right{
+                flex-direction:column;
+                align-items:stretch;
+            }
+
+            .nav-right a{
+                width:100%;
+                text-align:center;
+            }
+
+            .brand{
+                font-size:18px;
+            }
+
+            h2{
+                font-size:22px;
+            }
+
+            .cart-info h3{
+                font-size:18px;
+            }
+
+            .qty-control button{
+                padding:7px 10px;
+            }
+        }
     </style>
 </head>
 
@@ -184,35 +291,41 @@ foreach($cart as $item){
 
 <!-- NAVBAR -->
 <div class="navbar">
+
     <div class="nav-left">
         <img src="{{ asset('images/logo.jpg') }}" class="logo-nav">
         <span class="brand">Cheezy Bites</span>
     </div>
 
     <div class="nav-right">
-        <a href="/">Home</a>
+
+        @if(auth()->check() && auth()->user()->role == 'superadmin')
+            <a href="/dashboard">Home</a>
+        @else
+            <a href="/">Home</a>
+        @endif
+
         <a href="/produk">Produk</a>
         <a href="/pesanan">Pesanan</a>
+        <a href="/rate">Rate</a>
 
-        <a href="/cart" style="position: relative;">
+        @if(auth()->check() && auth()->user()->role != 'superadmin')
+        <a href="/cart">
             Cart
             @if($totalQty > 0)
-            <span style="
-                position:absolute;
-                top:-5px;
-                right:-10px;
-                background:red;
-                color:white;
-                border-radius:50%;
-                padding:2px 6px;
-                font-size:12px;">
-                {{ $totalQty }}
-            </span>
+                <span class="cart-badge">{{ $totalQty }}</span>
             @endif
         </a>
+        @endif
+
+        <a href="/contact">Contact</a>
+        <a href="/akun">Profile</a>
+
     </div>
+
 </div>
 
+<!-- CONTENT -->
 <div class="container">
 
     <h2>🛒 Keranjang Kamu</h2>
@@ -262,12 +375,18 @@ foreach($cart as $item){
             <b>Total: Rp {{ number_format($total) }}</b>
         </div>
 
-        <a href="/checkout">
-            <button class="checkout">Checkout</button>
-        </a>
+        <div class="checkout-wrap">
+            <a href="/checkout">
+                <button class="checkout">Checkout</button>
+            </a>
+        </div>
 
     @else
-        <p>Keranjang kosong 😢</p>
+
+        <div class="empty">
+            Keranjang kosong 😢
+        </div>
+
     @endif
 
 </div>

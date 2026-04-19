@@ -2,147 +2,477 @@
 <html>
 <head>
     <title>Riwayat Transaksi - Cheezy Bites</title>
-
-    <!-- WAJIB responsive -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <style>
-        body {
-            font-family: Arial;
-            background: #fff8f0;
-            margin: 0;
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
         }
 
-        /* ===== NAVBAR ===== */
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: orange;
-            padding: 10px 20px;
-            color: white;
-            flex-wrap: wrap;
+        body{
+            font-family:Arial, sans-serif;
+            background:#fff8f0;
+            color:#333;
         }
 
-        .nav-right {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
+        .navbar{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            background:orange;
+            padding:12px 20px;
+            color:white;
+            flex-wrap:wrap;
+            gap:15px;
         }
 
-        .nav-right a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            padding: 5px;
+        .nav-left{
+            display:flex;
+            align-items:center;
+            gap:10px;
         }
 
-        /* ===== CONTAINER ===== */
-        .container {
-            padding: 20px;
+        .logo-nav{
+            width:42px;
+            height:42px;
+            object-fit:cover;
+            border-radius:50%;
         }
 
-        /* ===== FILTER ===== */
-        .filter {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 20px;
+        .brand{
+            font-size:22px;
+            font-weight:bold;
         }
 
-        .btn {
-            padding: 8px 15px;
-            border-radius: 20px;
-            border: none;
-            cursor: pointer;
-            color: white;
-            font-size: 14px;
+        .nav-right{
+            display:flex;
+            flex-wrap:wrap;
+            gap:10px;
+            align-items:center;
         }
 
-        .all { background: gray; }
-        .pending { background: orange; }
-        .process { background: blue; }
-        .success { background: green; }
-        .cancel { background: red; }
-
-        /* ===== CARD ===== */
-        .card {
-            background: white;
-            padding: 15px;
-            margin-bottom: 10px;
-            border-radius: 10px;
-            box-shadow: 0 1px 5px rgba(0,0,0,0.05);
+        .nav-right a{
+            color:white;
+            text-decoration:none;
+            font-weight:bold;
+            padding:8px 12px;
+            border-radius:8px;
+            position:relative;
         }
 
-        /* ===== RESPONSIVE HP ===== */
-        @media (max-width: 768px) {
+        .nav-right a:hover{
+            background:rgba(255,255,255,.2);
+        }
 
-            .navbar {
-                flex-direction: column;
-                text-align: center;
-                gap: 10px;
+        .cart-badge{
+            position:absolute;
+            top:-5px;
+            right:-8px;
+            background:red;
+            color:white;
+            border-radius:50%;
+            min-width:18px;
+            height:18px;
+            font-size:11px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+        }
+
+        .container{
+            max-width:1100px;
+            margin:auto;
+            padding:25px 15px;
+        }
+
+        .title{
+            font-size:30px;
+            margin-bottom:20px;
+        }
+
+        .filter{
+            display:flex;
+            gap:10px;
+            flex-wrap:wrap;
+            margin-bottom:25px;
+        }
+
+        .btn-filter{
+            border:none;
+            padding:10px 16px;
+            border-radius:30px;
+            color:white;
+            cursor:pointer;
+            font-weight:bold;
+        }
+
+        .all{background:#666;}
+        .pending{background:orange;}
+        .process{background:#3498db;}
+        .success{background:#27ae60;}
+        .cancel{background:#e74c3c;}
+
+        .card{
+            background:white;
+            border-radius:18px;
+            padding:20px;
+            margin-bottom:18px;
+            box-shadow:0 4px 12px rgba(0,0,0,.07);
+        }
+
+        .top{
+            display:flex;
+            justify-content:space-between;
+            flex-wrap:wrap;
+            gap:10px;
+            margin-bottom:15px;
+            font-weight:bold;
+        }
+
+        .status{
+            color:orange;
+        }
+
+        .card-link{
+            text-decoration:none;
+            color:inherit;
+        }
+
+        .product-row{
+            display:flex;
+            gap:15px;
+            margin-bottom:15px;
+            align-items:center;
+        }
+
+        .product-img{
+            width:85px;
+            height:85px;
+            border-radius:14px;
+            object-fit:cover;
+        }
+
+        .product-info{
+            flex:1;
+        }
+
+        .product-name{
+            font-weight:bold;
+            margin-bottom:5px;
+        }
+
+        .small{
+            font-size:14px;
+            color:#777;
+        }
+
+        .price{
+            font-weight:bold;
+            margin-top:5px;
+        }
+
+        .line{
+            border-top:1px solid #eee;
+            margin:14px 0;
+        }
+
+        .total{
+            text-align:right;
+            font-weight:bold;
+            margin-bottom:15px;
+        }
+
+        .action{
+            display:flex;
+            justify-content:flex-end;
+            gap:10px;
+            flex-wrap:wrap;
+        }
+
+        .btn{
+            border:none;
+            padding:11px 18px;
+            border-radius:12px;
+            cursor:pointer;
+            font-weight:bold;
+            min-width:130px;
+        }
+
+        .orange-btn{
+            background:orange;
+            color:white;
+        }
+
+        .gray{
+            background:#eee;
+            color:#333;
+        }
+
+        .red{
+            background:#e74c3c;
+            color:white;
+        }
+
+        select, textarea{
+            width:100%;
+            padding:12px;
+            border-radius:12px;
+            border:1px solid #ddd;
+            margin-top:10px;
+            font-size:14px;
+        }
+
+        textarea{
+            resize:none;
+        }
+
+        @media(max-width:768px){
+
+            .navbar{
+                flex-direction:column;
+                align-items:flex-start;
             }
 
-            .nav-right {
-                justify-content: center;
+            .nav-left,.nav-right{
+                width:100%;
+                justify-content:center;
             }
 
-            .container {
-                padding: 15px;
+            .title{
+                text-align:center;
+                font-size:26px;
             }
 
-            .btn {
-                font-size: 12px;
-                padding: 7px 12px;
+            .product-row{
+                flex-direction:column;
+                text-align:center;
             }
 
-            .card {
-                font-size: 14px;
+            .product-img{
+                width:100%;
+                max-width:220px;
+                height:auto;
+            }
+
+            .action{
+                flex-direction:column;
+            }
+
+            .btn{
+                width:100%;
+            }
+
+            .total{
+                text-align:center;
             }
         }
 
+        @media(max-width:480px){
+
+            .nav-right{
+                flex-direction:column;
+                align-items:stretch;
+            }
+
+            .nav-right a{
+                width:100%;
+                text-align:center;
+            }
+
+            .filter{
+                flex-direction:column;
+            }
+
+            .btn-filter{
+                width:100%;
+            }
+
+            .title{
+                font-size:22px;
+            }
+        }
     </style>
 </head>
 
 <body>
 
+@php
+$cart = session('cart', []);
+$totalQty = 0;
+
+foreach($cart as $item){
+    $totalQty += $item['qty'];
+}
+@endphp
+
 <div class="navbar">
-    <div><b>Cheezy Bites</b></div>
+
+    <div class="nav-left">
+        <img src="{{ asset('images/logo.jpg') }}" class="logo-nav">
+        <span class="brand">Cheezy Bites</span>
+    </div>
 
     <div class="nav-right">
-        <a href="/">Home</a>
+
+        @if(auth()->user()->role == 'superadmin')
+            <a href="/dashboard">Home</a>
+        @else
+            <a href="/">Home</a>
+        @endif
+
         <a href="/produk">Produk</a>
         <a href="/pesanan">Pesanan</a>
-        <a href="/cart">Cart</a>
+        <a href="/rate">Rate</a>
+
+        @if(auth()->check() && auth()->user()->role != 'superadmin')
+        <a href="/cart">
+            Cart
+            @if($totalQty > 0)
+            <span class="cart-badge">{{ $totalQty }}</span>
+            @endif
+        </a>
+        @endif
+
+        <a href="/contact">Contact</a>
+        <a href="/akun">Profile</a>
+
     </div>
+
 </div>
 
 <div class="container">
 
-<h2>📦 Riwayat Transaksi</h2>
+<h2 class="title">📦 Riwayat Transaksi</h2>
 
-<!-- FILTER -->
 <div class="filter">
-    <a href="/pesanan"><button class="btn all">Semua</button></a>
-    <a href="/pesanan?status=pending"><button class="btn pending">Pending</button></a>
-    <a href="/pesanan?status=process"><button class="btn process">Diproses</button></a>
-    <a href="/pesanan?status=success"><button class="btn success">Selesai</button></a>
-    <a href="/pesanan?status=cancel"><button class="btn cancel">Dibatalkan</button></a>
+    <a href="/pesanan"><button class="btn-filter all">Semua</button></a>
+    <a href="/pesanan?status=pending"><button class="btn-filter pending">Pending</button></a>
+    <a href="/pesanan?status=process"><button class="btn-filter process">Diproses</button></a>
+    <a href="/pesanan?status=success"><button class="btn-filter success">Selesai</button></a>
+    <a href="/pesanan?status=cancel"><button class="btn-filter cancel">Dibatalkan</button></a>
 </div>
 
-<!-- DATA -->
 @if(count($orders) > 0)
 
-    @foreach($orders as $o)
-    <div class="card">
-        <p><b>Nama:</b> {{ $o->nama }}</p>
-        <p><b>Total:</b> Rp {{ number_format($o->total) }}</p>
-        <p><b>Status:</b> {{ strtoupper($o->status) }}</p>
+@foreach($orders as $o)
+
+<div class="card">
+
+    <div class="top">
+        <div>Order #{{ $o->id }}</div>
+        <div class="status">{{ strtoupper($o->status) }}</div>
     </div>
-    @endforeach
+
+    <a href="/pesanan/detail/{{ $o->id }}" class="card-link">
+
+        @foreach($o->items as $item)
+
+        <div class="product-row">
+
+            <img src="{{ asset('images/' . $item->gambar) }}" class="product-img">
+
+            <div class="product-info">
+                <div class="product-name">{{ $item->nama_produk }}</div>
+                <div class="small">Qty : {{ $item->qty }}</div>
+                <div class="price">Rp {{ number_format($item->harga) }}</div>
+            </div>
+
+        </div>
+
+        @endforeach
+
+    </a>
+
+    <div class="line"></div>
+
+    <div class="total">
+        Total Pesanan : Rp {{ number_format($o->total) }}
+    </div>
+
+    {{-- USER --}}
+    @if(auth()->user()->role != 'superadmin')
+
+    <div class="action">
+
+        @if($o->status == 'success')
+
+            <a href="/produk"><button class="btn gray">Beli Lagi</button></a>
+            <a href="/rate"><button class="btn orange-btn">Nilai</button></a>
+
+        @elseif($o->status == 'cancel')
+
+            <a href="/produk"><button class="btn gray">Beli Lagi</button></a>
+
+        @elseif($o->status == 'pending')
+
+            <button onclick="document.getElementById('cancel{{ $o->id }}').style.display='block'" class="btn red">
+                Batalkan
+            </button>
+
+        @else
+
+            <button class="btn gray">Diproses</button>
+
+        @endif
+
+    </div>
+
+    @if($o->status == 'pending')
+
+    <div id="cancel{{ $o->id }}" style="display:none; margin-top:10px;">
+
+        <form action="/pesanan/cancel/{{ $o->id }}" method="POST">
+            @csrf
+
+            <select name="alasan" required>
+                <option value="">Pilih alasan</option>
+                <option value="Ubah varian">Ubah varian</option>
+                <option value="Tidak jadi pesan">Tidak jadi pesan</option>
+                <option value="Pesan terlalu lama">Pesan terlalu lama</option>
+            </select>
+
+            <button type="submit" class="btn red" style="margin-top:10px;">
+                Konfirmasi Batal
+            </button>
+        </form>
+
+    </div>
+
+    @endif
+
+    {{-- ADMIN --}}
+    @else
+
+    <form action="/pesanan/update/{{ $o->id }}" method="POST">
+        @csrf
+
+        <select name="status">
+            <option value="pending" {{ $o->status=='pending' ? 'selected' : '' }}>Pending</option>
+            <option value="process" {{ $o->status=='process' ? 'selected' : '' }}>Diproses</option>
+            <option value="success" {{ $o->status=='success' ? 'selected' : '' }}>Selesai</option>
+            <option value="cancel" {{ $o->status=='cancel' ? 'selected' : '' }}>Dibatalkan</option>
+        </select>
+
+        <textarea name="keterangan" rows="3">{{ $o->keterangan }}</textarea>
+
+        <button type="submit" class="btn orange-btn" style="margin-top:10px;">
+            Update Pesanan
+        </button>
+
+    </form>
+
+    @endif
+
+</div>
+
+@endforeach
 
 @else
-    <p>Tidak ada pesanan 😢</p>
+
+<p>Tidak ada pesanan 😢</p>
+
 @endif
 
 </div>
