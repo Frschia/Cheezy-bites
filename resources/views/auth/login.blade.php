@@ -54,7 +54,8 @@ label{
 }
 
 input[type=email],
-input[type=password]{
+input[type=password],
+input[type=text]{
     width:100%;
     padding:13px;
     border:1px solid #ddd;
@@ -65,6 +66,25 @@ input[type=password]{
 
 input:focus{
     border-color:orange;
+}
+
+.password-box{
+    position:relative;
+}
+
+.password-box input{
+    padding-right:50px;
+}
+
+.eye-btn{
+    position:absolute;
+    right:12px;
+    top:50%;
+    transform:translateY(-50%);
+    border:none;
+    background:none;
+    cursor:pointer;
+    font-size:20px;
 }
 
 .remember{
@@ -106,9 +126,7 @@ input:focus{
     color:orange;
 }
 
-/* HP */
 @media(max-width:768px){
-
     .login-box{
         margin:20px auto;
         width:92%;
@@ -130,9 +148,7 @@ input:focus{
     }
 }
 
-/* Tablet */
 @media(min-width:769px) and (max-width:1024px){
-
     .login-box{
         max-width:500px;
         margin-top:60px;
@@ -173,12 +189,18 @@ input:focus{
         <div class="mt-4">
             <label>Password</label>
 
-            <x-text-input
-                id="password"
-                type="password"
-                name="password"
-                class="block mt-2 w-full"
-                required />
+            <div class="password-box">
+                <x-text-input
+                    id="password"
+                    type="password"
+                    name="password"
+                    class="block mt-2 w-full"
+                    required />
+
+                <button type="button" class="eye-btn" onclick="togglePassword()" id="eyeIcon">
+                    👁️
+                </button>
+            </div>
         </div>
 
         <x-input-error :messages="$errors->get('password')" class="mt-2" />
@@ -213,5 +235,20 @@ input:focus{
     </form>
 
 </div>
+
+<script>
+function togglePassword(){
+    let password = document.getElementById("password");
+    let eye = document.getElementById("eyeIcon");
+
+    if(password.type === "password"){
+        password.type = "text";
+        eye.innerHTML = "🙈";
+    }else{
+        password.type = "password";
+        eye.innerHTML = "👁️";
+    }
+}
+</script>
 
 </x-guest-layout>

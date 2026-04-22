@@ -72,6 +72,25 @@ input:focus{
     margin-top:15px;
 }
 
+.password-box{
+    position:relative;
+}
+
+.password-box input{
+    padding-right:50px;
+}
+
+.eye-btn{
+    position:absolute;
+    right:12px;
+    top:50%;
+    transform:translateY(-50%);
+    border:none;
+    background:none;
+    cursor:pointer;
+    font-size:20px;
+}
+
 .bottom{
     margin-top:20px;
 }
@@ -185,12 +204,18 @@ input:focus{
         <div class="mt">
             <label>Password</label>
 
-            <x-text-input
-                id="password"
-                type="password"
-                name="password"
-                class="block mt-2 w-full"
-                required />
+            <div class="password-box">
+                <x-text-input
+                    id="password"
+                    type="password"
+                    name="password"
+                    class="block mt-2 w-full"
+                    required />
+
+                <button type="button" class="eye-btn" onclick="togglePassword('password','eye1')" id="eye1">
+                    👁️
+                </button>
+            </div>
         </div>
 
         <x-input-error :messages="$errors->get('password')" class="mt-2" />
@@ -199,12 +224,18 @@ input:focus{
         <div class="mt">
             <label>Konfirmasi Password</label>
 
-            <x-text-input
-                id="password_confirmation"
-                type="password"
-                name="password_confirmation"
-                class="block mt-2 w-full"
-                required />
+            <div class="password-box">
+                <x-text-input
+                    id="password_confirmation"
+                    type="password"
+                    name="password_confirmation"
+                    class="block mt-2 w-full"
+                    required />
+
+                <button type="button" class="eye-btn" onclick="togglePassword('password_confirmation','eye2')" id="eye2">
+                    👁️
+                </button>
+            </div>
         </div>
 
         <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
@@ -225,5 +256,20 @@ input:focus{
     </form>
 
 </div>
+
+<script>
+function togglePassword(inputId, eyeId){
+    let input = document.getElementById(inputId);
+    let eye = document.getElementById(eyeId);
+
+    if(input.type === "password"){
+        input.type = "text";
+        eye.innerHTML = "🙈";
+    }else{
+        input.type = "password";
+        eye.innerHTML = "👁️";
+    }
+}
+</script>
 
 </x-guest-layout>
